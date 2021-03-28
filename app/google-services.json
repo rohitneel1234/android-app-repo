@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "285227428604",
+    "firebase_url": "https://jtgotpauthentication.firebaseio.com",
+    "project_id": "jtgotpauthentication",
+    "storage_bucket": "jtgotpauthentication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285227428604:android:b26c8a01f571d6427d4579",
+        "android_client_info": {
+          "package_name": "com.example.gcpapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "285227428604-tlrn2tdfrfeoh4uh7r07ej34b9opo9gj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gcpapp",
+            "certificate_hash": "26ac6cd7b7603f780c375c0b3c1a71312d0e5b02"
+          }
+        },
+        {
+          "client_id": "285227428604-7u0tnvm4rm18p91aba1ml9h8f5r1urbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbgxw5Ms_0UPYRXjMc9FsJuh5bMjf3QRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "285227428604-7u0tnvm4rm18p91aba1ml9h8f5r1urbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

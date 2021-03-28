@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00C853</color>
+    <color name="colorPrimaryDark">#222222</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccentLogin">#f2fe71</color>
+    <color name="bg_login">#26ae90</color>
+    <color name="bg_register">#26ae90</color>
+    <color name="bg_main">#428bca</color>
+    <color name="dialogBox">#2c2542</color>
+    <color name="alert">#AC1600</color>
+    <color name="white">#ffffff</color>
+    <color name="input_login">#222222</color>
+    <color name="input_login_hint">#999999</color>
+    <color name="input_register">#888888</color>
+    <color name="input_register_bg">#3b4148</color>
+    <color name="input_register_hint">#5e6266</color>
+    <color name="btn_login">#26ae90</color>
+    <color name="btn_login_bg">#eceef1</color>
+    <color name="lbl_name">#333333</color>
+    <color name="btn_logut_bg">#ff6861</color>
+    <color name="bottom_color">#FFFFFF</color>
+    <color name="backgroundColor">#FCFCFC</color>
+    <color name="splashColor">#e11a2c</color>
+    <color name="switchColor">#353D45</color>
+    <color name="colorDarkGrey">#455A64</color>
+    <color name="splash">#E0E0E0</color>
+    <color name="bgColor">#0d0620</color>
+    <color name="cardColor">#ffffff</color>
+    <color name="textcardColor">#3f3f3f</color>
+    <color name="toolbarColor">#46006d</color>
+    <color name="cirular_textview_background">#46006d</color>
+</resources>

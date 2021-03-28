@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/stroke_bg1">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorAccent"
+        android:weightSum="1">
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="4.45">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="16dp"
+                    android:background="@drawable/star"/>
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="Rate Us"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#eeeeee"/>
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                >
+
+                <TextView android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:text="If you love our app, please take a moment to rate it"
+                    android:textSize="14sp"
+                    android:textColor="#555555"/>
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp"
+                    android:weightSum="1"
+                    android:layout_gravity="center_vertical">
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:padding="0.5dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/stroke_bg">
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:id="@+id/happy"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageView android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/happy"/>
+                            <TextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_marginTop="6dp"
+                                android:text="Loved it!"
+                                android:textSize="14sp"
+                                android:textColor="#000000"
+                                android:singleLine="true"
+                                android:layout_marginBottom="6dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:padding="0.5dp"
+                        android:layout_marginLeft="8dp"
+                        android:background="@drawable/stroke_bg">
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:id="@+id/bad"
+                            android:padding="10dp"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageView android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/sadd"/>
+                            <TextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_marginTop="6dp"
+                                android:text="Meh!"
+                                android:textSize="14sp"
+                                android:textColor="#000000"
+                                android:singleLine="true"
+                                android:layout_marginBottom="6dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

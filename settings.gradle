@@ -1,0 +1,2 @@
+rootProject.name='GCPApp'
+include ':app'

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RegisterActivity" >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/signin_page_background" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="32dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="15dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:tint="#191919"
+                android:src="@drawable/ic_chevron_left_black_24dp"/>
+            <TextView
+                android:id="@+id/btnLinkToLoginScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textColor="#191919"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:optRoundCardElevation="0dp"
+        app:optRoundCardLeftTopCorner="true"
+        app:optRoundCardRightTopCorner="true"
+        app:optRoundCardLeftBottomCorner="false"
+        app:optRoundCardRightBottomCorner="false"
+        app:optRoundCardCornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create account"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="#191919"
+                    android:layout_marginStart="30dp" />
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="Name"
+                    android:singleLine="true"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold"
+                    android:textColor="#191919"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/person"
+                    android:layout_marginTop="22dp"
+                    android:drawableTint="#696969"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#696969" />
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="E-mail"
+                    android:singleLine="true"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold"
+                    android:textColor="#191919"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/email"
+                    android:layout_marginTop="22dp"
+                    android:drawableTint="#696969"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#696969" />
+
+                <EditText
+                    android:id="@+id/mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="Mobile Number"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:maxLength = "12"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold"
+                    android:textColor="#191919"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/mobile"
+                    android:layout_marginTop="22dp"
+                    android:drawableTint="#696969"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#696969" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:textColor="#191919"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/ic_lock_outline_black_24dp"
+                    android:layout_marginTop="22dp"
+                    android:drawableTint="#696969"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#696969" />
+
+                <EditText
+                    android:id="@+id/cnpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="Confirm Password"
+                    android:textColorHint="#696969"
+                    android:inputType="textPassword"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:textColor="#191919"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/ic_lock_outline_black_24dp"
+                    android:layout_marginTop="22dp"
+                    android:drawableTint="#696969"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#696969" />
+
+                <Button
+                    android:id="@+id/btnRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="80dp"
+                    android:background="@drawable/button_signin_background"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textAllCaps="false"
+                    android:text="Sign in" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

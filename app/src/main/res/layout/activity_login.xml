@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LoginActivity" >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/signin_page_background" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="55dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:id="@+id/optRoundCardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:optRoundCardElevation="0dp"
+        app:optRoundCardLeftTopCorner="true"
+        app:optRoundCardRightTopCorner="true"
+        app:optRoundCardLeftBottomCorner="false"
+        app:optRoundCardRightBottomCorner="false"
+        app:optRoundCardCornerRadius="50dp"
+        app:optRoundCardBackgroundColor="#353758"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="80dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#9394B8"
+                    android:textSize="17sp"
+                    android:text="Welcome back"/>
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="Email"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:background="@android:color/transparent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#5A5A5A"
+                    />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white"
+                    android:background="@android:color/transparent"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#5A5A5A"
+                    />
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/button_login_background"
+                    android:layout_marginEnd="30dp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textAllCaps="false"
+                    android:text="Log in"
+                    />
+                <Button
+                    android:id="@+id/btn_reset_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:elevation="0dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/button_another_account"
+                    android:layout_marginEnd="30dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:onClick="forgotPassword"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    android:text="@string/btn_forgot_password" />
+
+                <com.github.captain_miao.optroundcardview.OptRoundCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="60dp"
+                    app:optRoundCardLeftTopCorner="true"
+                    app:optRoundCardRightTopCorner="true"
+                    app:optRoundCardLeftBottomCorner="false"
+                    app:optRoundCardRightBottomCorner="false"
+                    app:optRoundCardCornerRadius="30dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/btnLinkToRegisterScreen"
+                            android:layout_width="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_link_to_register"
+                            android:textSize="20sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:textStyle="bold"
+                            android:padding="15dp"
+                            android:textColor="#FF5722" />
+
+                    </LinearLayout>
+
+
+                </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/user_image"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@id/optRoundCardView"
+        app:layout_constraintEnd_toEndOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="@id/optRoundCardView"
+        tools:ignore="MissingConstraints" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

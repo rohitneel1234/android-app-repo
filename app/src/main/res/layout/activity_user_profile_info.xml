@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".activity.UserProfileInfo">
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/accountBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/ic_chevron_left_black_24dp"/>
+
+        <TextView
+            android:id="@+id/userNameToolbar"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:background="#2c2542"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="54dp" />
+
+    <TextView
+        android:id="@+id/textUserLetter"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_profile"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="185dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/white"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/white"
+        android:ems="10"
+        app:backgroundTint="@color/white"
+        android:inputType="textPersonName"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="265dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/white"
+        android:text="Mobile Number"
+        />
+
+    <EditText
+        android:id="@+id/etMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        app:backgroundTint="@color/white"
+        android:inputType="phone" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="345dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/white"
+        android:text="Email Address"
+        />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="360dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/white"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        app:backgroundTint="@color/white"
+        android:inputType="textEmailAddress" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/circular_button"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@color/white"
+        android:drawableTint="@color/white"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+</RelativeLayout>
