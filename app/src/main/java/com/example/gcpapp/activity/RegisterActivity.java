@@ -95,7 +95,7 @@ public class RegisterActivity extends Activity implements AsyncResponse {
                         postData.put("txtUmobile", inputMobile.getText().toString());
                         PostResponseAsyncTask loginTask =
                                 new PostResponseAsyncTask(RegisterActivity.this, postData, RegisterActivity.this);
-                        loginTask.execute("https://vast-service-281617.uc.r.appspot.com/registration.php");
+                        loginTask.execute("https://mobile-app-gcp.wl.r.appspot.com/registration.php");
 
                     }
                     else {

@@ -123,14 +123,7 @@ public class DownloadMedia extends AppCompatActivity {
                                 @Override
                                 public void onClick(int position) {
 
-                                    File[] files = mDirectory.listFiles();
-                                    if (files != null) {
-                                        for (File file : files) {
-                                            String path = file.getAbsolutePath();
-                                            fileList.add(path);
-                                        }
-                                    }
-                                    ShowDialogBox(fileList.get(position));
+                                    ShowDialogBox(list.get(position));
                                 }
                             });
                         }

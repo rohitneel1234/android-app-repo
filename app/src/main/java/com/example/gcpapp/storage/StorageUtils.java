@@ -236,7 +236,7 @@ public class StorageUtils extends AppCompatActivity {
     }
 
     private static File getTempPkc12File() throws IOException {
-        InputStream pkc12Stream = ProjectApplication.getAppContext().getAssets().open("vast-service-281617-1d8ae612cf78.p12");
+        InputStream pkc12Stream = ProjectApplication.getAppContext().getAssets().open("mobile-app-gcp-01b2e41072d8.p12");
         File tempPkc12File = File.createTempFile("temp_pkc12_file", "p12");
         OutputStream tempFileStream = new FileOutputStream(tempPkc12File);
 

@@ -90,7 +90,7 @@ public class LoginActivity extends Activity implements AsyncResponse {
                     postData.put("txtUpass", inputPassword.getText().toString());
                     PostResponseAsyncTask loginTask =
                             new PostResponseAsyncTask(LoginActivity.this, postData, LoginActivity.this);
-                    loginTask.execute("https://vast-service-281617.uc.r.appspot.com/login.php");
+                    loginTask.execute("https://mobile-app-gcp.wl.r.appspot.com/login.php");
                 }
             }
 

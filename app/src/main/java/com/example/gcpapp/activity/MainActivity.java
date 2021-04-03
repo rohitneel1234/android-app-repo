@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 postData.put("txtEmail", txtEmail);
                 PostResponseAsyncTask emailTask =
                         new PostResponseAsyncTask(MainActivity.this, postData, MainActivity.this);
-                emailTask.execute("https://vast-service-281617.uc.r.appspot.com/getUserInformation.php");
+                emailTask.execute("https://mobile-app-gcp.wl.r.appspot.com/getUserInformation.php");
             }
         });
 

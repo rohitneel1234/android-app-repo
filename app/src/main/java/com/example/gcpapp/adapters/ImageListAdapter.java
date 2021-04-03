@@ -33,6 +33,7 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         return new ImageViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false));
+
     }
 
     @Override

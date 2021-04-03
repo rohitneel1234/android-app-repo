@@ -93,7 +93,7 @@ public class ChangePassword extends AppCompatActivity implements AsyncResponse {
             postData.put("txtPass", newPass);
             PostResponseAsyncTask resetPassTask =
                     new PostResponseAsyncTask(ChangePassword.this, postData, ChangePassword.this);
-            resetPassTask.execute("https://vast-service-281617.uc.r.appspot.com/resetPassword.php");
+            resetPassTask.execute("https://mobile-app-gcp.wl.r.appspot.com/resetPassword.php");
         } else {
             Toast.makeText(getApplicationContext(), "Password Does Not match", Toast.LENGTH_SHORT).show();
         }

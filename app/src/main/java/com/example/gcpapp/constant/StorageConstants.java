@@ -7,9 +7,9 @@ import android.content.Context;
  */
 public class StorageConstants {
     public static Context CONTEXT                        = null;
-    public static final String BUCKET_NAME               = "jtg_app_bucket";
-    public static final String PROJECT_ID_PROPERTY       = "vast-service-281617";
-    public static final String APPLICATION_NAME_PROPERTY = "JTGTargetAndroidApp";
-    public static final String ACCOUNT_ID_PROPERTY       = "jtgapp@vast-service-281617.iam.gserviceaccount.com";
+    public static final String BUCKET_NAME               = "mobile_app_buckets";
+    public static final String PROJECT_ID_PROPERTY       = "mobile-app-gcp";
+    public static final String APPLICATION_NAME_PROPERTY = "Mobile-App-GCP";
+    public static final String ACCOUNT_ID_PROPERTY       = "mobileapp@mobile-app-gcp.iam.gserviceaccount.com";
 
 }

@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\mahes\\.android\\release.jks')
+            storePassword '12345678'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -19,6 +27,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -28,6 +37,10 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE-FIREBASE.txt'
         exclude 'META-INF/NOTICE'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
     }
 
 }
@@ -47,6 +60,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'com.mcxiaoke.volley:library-aar:1.0.0'
     implementation files('libs/GenAsync.jar')
+    annotationProcessor 'androidx.annotation:annotation:1.0.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.10'
     implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
@@ -54,7 +68,7 @@ dependencies {
     implementation 'com.github.captain-miao:optroundcardview:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.google.firebase:firebase-core:11.8.0'
-    implementation 'com.google.firebase:firebase-auth:11.8.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.3'
     implementation 'com.squareup.retrofit2:retrofit:2.2.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     implementation 'com.google.code.gson:gson:2.6.1'

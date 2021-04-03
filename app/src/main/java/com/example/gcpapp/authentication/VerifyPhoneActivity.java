@@ -130,7 +130,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                 "+91" + mobile,
                 30,
                 TimeUnit.SECONDS,
-                TaskExecutors.MAIN_THREAD,
+                VerifyPhoneActivity.this,
                 mCallback);
     }
 

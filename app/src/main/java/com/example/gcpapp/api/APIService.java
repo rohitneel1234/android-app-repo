@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 
 public interface APIService {
 
-    String BASE_URL = "https://vast-service-281617.uc.r.appspot.com";
+    String BASE_URL = "https://mobile-app-gcp.wl.r.appspot.com";
 
     @FormUrlEncoded
     @POST("/updateProfile.php")
