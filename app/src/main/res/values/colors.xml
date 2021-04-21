@@ -3,6 +3,8 @@
     <color name="colorPrimary">#00C853</color>
     <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_700">#FF3700B3</color>
     <color name="colorAccentLogin">#f2fe71</color>
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#26ae90</color>

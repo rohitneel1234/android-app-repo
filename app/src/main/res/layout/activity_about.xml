@@ -50,4 +50,49 @@
         android:layout_marginTop="245dp"
         />
 
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="315dp"
+        android:layout_marginEnd="30dp"
+        android:text="Media storage app for users using the\n\t\t\t\t\
+        google cloud platform."
+        android:textColor="@color/input_login"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="385dp"
+        android:layout_marginEnd="20dp"
+        android:text="\tThe core features of this app include:\n\n"
+        android:textColor="@color/alert"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginEnd="10dp"
+        android:text="
+        1. Log in and sign up\n
+        2. Forgot password\n
+        3. Update profile details\n
+        4. Change password\n
+        5. Upload media (images/videos)\n
+        6. Download media(images/videos)\n
+        7. Rate us"
+        android:textColor="@color/input_login"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
 </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient"
+    android:background="#2c2542"
     tools:context=".activity.UserProfileInfo">
 
     <RelativeLayout android:layout_width="match_parent"
@@ -30,7 +30,7 @@
 
     <View
         android:id="@+id/view"
-        android:background="#2c2542"
+        android:background="#0d0620"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="54dp" />
@@ -121,12 +121,12 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="480dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/circular_button"
-        android:backgroundTint="@color/colorAccent"
+        android:shadowColor="#80000000"
+        android:background="@drawable/button_selector_new"
         android:textColor="@color/white"
         android:drawableTint="@color/white"
         android:text="Save"

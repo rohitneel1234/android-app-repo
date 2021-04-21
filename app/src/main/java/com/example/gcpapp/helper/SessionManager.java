@@ -116,6 +116,24 @@ public class SessionManager {
         _context.startActivity(i);
     }
 
+    /**
+     *  Storing current theme state in editor.
+     */
+    public void saveState(boolean state) {
+        SharedPreferences sharedPreferences = _context.getSharedPreferences("ABHOPositive", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        editor.putBoolean("NightMode", state);
+        editor.apply();
+    }
+
+    /**
+     *  Loading current theme state in editor.
+     */
+    public boolean loadState() {
+        SharedPreferences sharedPreferences = _context.getSharedPreferences("ABHOPositive", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("NightMode", false);
+    }
+
 
     // Check for login
     public boolean isUserLoggedIn(){

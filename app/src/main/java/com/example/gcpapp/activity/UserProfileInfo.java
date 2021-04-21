@@ -99,7 +99,10 @@ public class UserProfileInfo extends AppCompatActivity {
                         public void onResponse(Call<Result> call, Response<Result> response) {
                             Result result = response.body();
                             Toast.makeText(getApplicationContext(), result.getMsg(), Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(),AccountActivity.class));
+                            Intent intent = new Intent();
+                            intent.putExtra("name",userName);
+                            setResult(RESULT_OK,intent);
+                            finish();
                         }
 
                         @Override
