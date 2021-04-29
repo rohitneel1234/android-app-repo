@@ -26,7 +26,6 @@ import com.example.gcpapp.R;
 import com.example.gcpapp.activity.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -98,8 +97,12 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 otp = editTextCode1.getText().toString().trim() + editTextCode2.getText().toString().trim() +editTextCode3.getText().toString().trim() + editTextCode4.getText().toString().trim()+editTextCode5.getText().toString().trim() + editTextCode6.getText().toString().trim();
-                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, otp);
-                SignInWithPhone(credential);
+                if (verificationCode != null) {
+                    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, otp);
+                    SignInWithPhone(credential);
+                } else {
+                    Toast.makeText(getApplicationContext(),"Please enter OTP for verification",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

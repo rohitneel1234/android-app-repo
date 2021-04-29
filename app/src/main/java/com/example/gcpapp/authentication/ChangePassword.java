@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gcpapp.R;
+import com.example.gcpapp.util.Utils;
 import com.google.android.material.textfield.TextInputLayout;
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
@@ -86,16 +87,19 @@ public class ChangePassword extends AppCompatActivity implements AsyncResponse {
             return;
         }
 
-        if (newPass.equals(reNewPass)) {
-
-            HashMap<String, String> postData = new HashMap<String, String>();
-            postData.put("txtMobile", userMobile);
-            postData.put("txtPass", newPass);
-            PostResponseAsyncTask resetPassTask =
-                    new PostResponseAsyncTask(ChangePassword.this, postData, ChangePassword.this);
-            resetPassTask.execute("https://mobile-app-gcp.wl.r.appspot.com/resetPassword.php");
+        if (Utils.getInstance(getApplicationContext()).isNetworkAvailable()) {
+            if (newPass.equals(reNewPass)) {
+                HashMap<String, String> postData = new HashMap<String, String>();
+                postData.put("txtMobile", userMobile);
+                postData.put("txtPass", newPass);
+                PostResponseAsyncTask resetPassTask =
+                        new PostResponseAsyncTask(ChangePassword.this, postData, ChangePassword.this);
+                resetPassTask.execute("https://mobile-app-gcp.wl.r.appspot.com/resetPassword.php");
+            } else {
+                Toast.makeText(getApplicationContext(), "Password Does Not match", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(getApplicationContext(), "Password Does Not match", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Please check your internet connection and try again !!", Toast.LENGTH_SHORT).show();
         }
     }
 

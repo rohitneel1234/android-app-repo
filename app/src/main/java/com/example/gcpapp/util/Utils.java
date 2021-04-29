@@ -1,8 +1,11 @@
 package com.example.gcpapp.util;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -18,6 +21,19 @@ import java.io.File;
  */
 public class Utils {
     public static final String TAG     = "GCP_Media";
+
+    @SuppressLint("StaticFieldLeak")
+    private static final Utils instance = new Utils();
+    @SuppressLint("StaticFieldLeak")
+    static Context context;
+    private ConnectivityManager connectivityManager;
+    NetworkInfo wifiInfo, mobileInfo;
+    private boolean connected = false;
+
+    public static Utils getInstance(Context ctx) {
+        context = ctx.getApplicationContext();
+        return instance;
+    }
 
     /**
      * Create toast for an activity based on the context
@@ -79,6 +95,23 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    public boolean isNetworkAvailable(){
+        try {
+            connectivityManager = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            connected = networkInfo != null && networkInfo.isAvailable() &&
+                    networkInfo.isConnected();
+            return connected;
+
+        } catch (Exception e) {
+            System.out.println("CheckConnectivity Exception: " + e.getMessage());
+            Log.v("connectivity", e.toString());
+        }
+        return connected;
     }
 
 }

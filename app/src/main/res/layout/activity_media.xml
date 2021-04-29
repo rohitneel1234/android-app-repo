@@ -5,18 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".upload.MediaActivity">
 
-
     <LinearLayout
+        android:id="@+id/linearImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="5">
 
         <ImageView
-            android:id="@+id/img_file"
+            android:id="@+id/imgView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.9" />
+            android:layout_weight="3.0" />
 
     </LinearLayout>
 
@@ -37,7 +37,7 @@
             android:id="@+id/fab1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_label="Photo"
+            app:fab_label="Camera"
             app:fab_size="mini"
             android:src="@drawable/ic_camera_black_24dp" />
 
@@ -45,9 +45,17 @@
             android:id="@+id/fab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:fab_label="Gallery"
+            app:fab_size="mini"
+            android:src="@drawable/ic_menu_gallery" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:fab_label="Video"
             app:fab_size="mini"
-            android:src="@drawable/ic_video_library_black_24dp" />
+            android:src="@drawable/ic_baseline_video_library_24" />
 
 
     </com.github.clans.fab.FloatingActionMenu>

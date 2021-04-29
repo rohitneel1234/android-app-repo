@@ -23,6 +23,7 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
+            android:id="@+id/linearBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -33,7 +34,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:tint="#191919"
+                app:tint="#191919"
                 android:src="@drawable/ic_chevron_left_black_24dp"/>
             <TextView
                 android:id="@+id/btnLinkToLoginScreen"

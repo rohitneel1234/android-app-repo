@@ -5,11 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 import com.example.gcpapp.R;
 
 import java.util.ArrayList;
@@ -38,7 +35,7 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
 
     @Override
     public void onBindViewHolder(@NonNull final ImageViewHolder holder, int position) {
-                 Glide.with(context)
+                 GlideApp.with(context)
                 .load(fileArrayList.get(holder.getAdapterPosition()))
                 .centerCrop()
                 .into(holder.imageView);

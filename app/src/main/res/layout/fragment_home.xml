@@ -54,6 +54,7 @@
         app:layout_editor_absoluteX="0dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardPersonalData"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -82,10 +83,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Personal Data"
-                    android:layout_marginTop="2dp"
+                    android:text="@string/personalData"
+                    android:layout_marginTop="0dp"
                     android:fontFamily="@font/mo_re"
-                    android:textColor="@color/textcardColor"
                     android:textSize="14sp"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -93,6 +93,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardTutorial"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -113,18 +114,17 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="110dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_course_schedule"/>
+                    android:background="@drawable/ic_tutorial_icon"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Schedule"
-                    android:textColor="@color/textcardColor"
+                    android:text="@string/tutorial"
                     android:textSize="14sp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="0dp"
                     android:fontFamily="@font/mo_re"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -160,10 +160,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="History"
-                    android:textColor="@color/textcardColor"
+                    android:text="@string/history"
                     android:textSize="14sp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="0dp"
                     android:fontFamily="@font/mo_re"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -199,9 +198,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Report"
-                    android:layout_marginTop="2dp"
-                    android:textColor="@color/textcardColor"
+                    android:text="@string/report"
+                    android:layout_marginTop="0dp"
                     android:textSize="14sp"
                     android:fontFamily="@font/mo_re"
                     android:textStyle="bold"/>

@@ -5,8 +5,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.example.gcpapp.R;
+import com.example.gcpapp.adapters.GlideApp;
 
 public class FullView extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class FullView extends AppCompatActivity {
 
         String img_id = getIntent().getStringExtra("img_id");
 
-        Glide.with(getApplicationContext())
+        GlideApp.with(getApplicationContext())
                 .load(img_id)
                 .fitCenter()
                 .into(imageView);

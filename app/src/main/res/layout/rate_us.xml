@@ -64,6 +64,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="16dp"
                     android:weightSum="1"
+                    android:gravity="center"
                     android:layout_gravity="center_vertical">
                     <LinearLayout android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -88,36 +89,6 @@
                                 android:gravity="center"
                                 android:layout_marginTop="6dp"
                                 android:text="Loved it!"
-                                android:textSize="14sp"
-                                android:textColor="#000000"
-                                android:singleLine="true"
-                                android:layout_marginBottom="6dp"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:padding="0.5dp"
-                        android:layout_marginLeft="8dp"
-                        android:background="@drawable/stroke_bg">
-
-                        <LinearLayout android:layout_width="match_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="center"
-                            android:id="@+id/bad"
-                            android:padding="10dp"
-                            android:orientation="vertical"
-                            android:gravity="center">
-                            <ImageView android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/sadd"/>
-                            <TextView android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:layout_marginTop="6dp"
-                                android:text="Meh!"
                                 android:textSize="14sp"
                                 android:textColor="#000000"
                                 android:singleLine="true"

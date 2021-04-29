@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
@@ -30,6 +30,7 @@
         android:allowBackup="false"
         android:icon="@mipmap/app_logo"
         android:label="@string/app_name"
+        tools:replace="android:allowBackup"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
@@ -113,7 +114,17 @@
             android:name=".download.ShowVideo"
             android:label="@string/title_activity_show_video"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
-
+        <activity
+            android:name=".app.IntroActivity"
+            android:theme="@style/AppTheme.NoActionBar.Fullscreen">
+        </activity>
+        <activity
+            android:name=".tutorials.TutorialActivity"
+            android:screenOrientation="portrait"
+            android:label="Tutorial"
+            android:icon="@drawable/ic_chevron_left_black_24dp"
+            android:theme="@style/TutorialTheme">
+        </activity>
         <receiver android:name=".authentication.OTPReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>

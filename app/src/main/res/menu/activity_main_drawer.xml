@@ -10,12 +10,13 @@
             android:title="Home" />
           <item
               android:id="@+id/nav_upload"
-              android:icon="@drawable/ic_file_upload_black_24dp"
-              android:title="Upload" />
+              android:icon="@drawable/photo_editor_icon"
+              android:title="Photo Editor" />
         <item
             android:id="@+id/nav_download"
-            android:icon="@drawable/ic_file_download_black_24dp"
-            android:title="Download" />
+            android:icon="@drawable/gallery_view"
+            android:tint="#000000"
+            android:title="Gallery" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/baseline_power_settings_new_black_18dp"
@@ -37,6 +38,10 @@
                 android:id="@+id/nav_rate_us"
                 android:icon="@drawable/ic_stars_black_24dp"
                 android:title="Rate Us" />
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_baseline_share_24"
+                android:title="Share App" />
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/baseline_info_white_48dp"

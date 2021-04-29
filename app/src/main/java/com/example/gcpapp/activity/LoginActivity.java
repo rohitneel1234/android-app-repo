@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.gcpapp.R;
 import com.example.gcpapp.authentication.ForgotPassword;
 import com.example.gcpapp.helper.SessionManager;
+import com.example.gcpapp.util.Utils;
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
@@ -69,8 +70,8 @@ public class LoginActivity extends Activity implements AsyncResponse {
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                String email = inputEmail.getText().toString().trim();
 
+                String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
 
                 if (email.isEmpty()) {
@@ -83,17 +84,19 @@ public class LoginActivity extends Activity implements AsyncResponse {
                 useremail = inputEmail.getText().toString();
                 userpass = inputPassword.getText().toString();
 
-                if(useremail.length() > 0 && userpass.length() >=6)
-                {
-                    HashMap<String, String> postData = new HashMap<String, String>();
-                    postData.put("txtUemail", inputEmail.getText().toString());
-                    postData.put("txtUpass", inputPassword.getText().toString());
-                    PostResponseAsyncTask loginTask =
-                            new PostResponseAsyncTask(LoginActivity.this, postData, LoginActivity.this);
-                    loginTask.execute("https://mobile-app-gcp.wl.r.appspot.com/login.php");
+                if (Utils.getInstance(getApplicationContext()).isNetworkAvailable()) {
+                    if (useremail.length() > 0 && userpass.length() >= 6) {
+                        HashMap<String, String> postData = new HashMap<String, String>();
+                        postData.put("txtUemail", inputEmail.getText().toString());
+                        postData.put("txtUpass", inputPassword.getText().toString());
+                        PostResponseAsyncTask loginTask =
+                                new PostResponseAsyncTask(LoginActivity.this, postData, LoginActivity.this);
+                        loginTask.execute("https://mobile-app-gcp.wl.r.appspot.com/login.php");
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(),"Please check your internet connection and try again !!",Toast.LENGTH_SHORT).show();
                 }
             }
-
         });
 
         // Link to Register Screen
@@ -120,6 +123,14 @@ public class LoginActivity extends Activity implements AsyncResponse {
 
     @Override
     public void processFinish(String s) {
+
+        session.createUserLoginSession(useremail);
+        Toast.makeText(this, "Login Successfully", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
 
         if(s.equals("success")) {
             session.createUserLoginSession(useremail);

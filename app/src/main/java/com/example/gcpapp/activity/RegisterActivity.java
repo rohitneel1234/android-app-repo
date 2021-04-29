@@ -12,13 +12,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.gcpapp.R;
 import com.example.gcpapp.authentication.VerifyPhoneActivity;
 import com.example.gcpapp.helper.SQLiteHandler;
 import com.example.gcpapp.helper.SessionManager;
+import com.example.gcpapp.util.Utils;
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
@@ -28,7 +29,7 @@ import java.util.HashMap;
 public class RegisterActivity extends Activity implements AsyncResponse {
     private static final String TAG = RegisterActivity.class.getSimpleName();
     private Button btnRegister;
-    private TextView btnLinkToLogin;
+    private LinearLayout btnLinkToLogin;
     private EditText inputFullName;
     private EditText inputEmail;
     private EditText inputPassword;
@@ -52,7 +53,7 @@ public class RegisterActivity extends Activity implements AsyncResponse {
         inputcnpass=(EditText)findViewById(R.id.cnpassword);
         inputMobile = (EditText) findViewById(R.id.mobile);
         btnRegister = (Button) findViewById(R.id.btnRegister);
-        btnLinkToLogin = findViewById(R.id.btnLinkToLoginScreen);
+        btnLinkToLogin = findViewById(R.id.linearBack);
         session = new SessionManager(getApplicationContext());
 
 
@@ -65,6 +66,7 @@ public class RegisterActivity extends Activity implements AsyncResponse {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (inputFullName.getText().toString().isEmpty()) {
                     inputFullName.setError("Enter name");
                     inputFullName.requestFocus();
@@ -86,20 +88,23 @@ public class RegisterActivity extends Activity implements AsyncResponse {
                     ucpass = inputcnpass.getText().toString();
                     userMobile = inputMobile.getText().toString();
 
-                    if ((upass.equals(ucpass))) {
+                    if (Utils.getInstance(getApplicationContext()).isNetworkAvailable()) {
+                        if ((upass.equals(ucpass))) {
 
-                        HashMap<String, String> postData = new HashMap<String, String>();
-                        postData.put("txtUname", inputFullName.getText().toString());
-                        postData.put("txtUpass", inputPassword.getText().toString());
-                        postData.put("txtUemail", inputEmail.getText().toString());
-                        postData.put("txtUmobile", inputMobile.getText().toString());
-                        PostResponseAsyncTask loginTask =
-                                new PostResponseAsyncTask(RegisterActivity.this, postData, RegisterActivity.this);
-                        loginTask.execute("https://mobile-app-gcp.wl.r.appspot.com/registration.php");
+                            HashMap<String, String> postData = new HashMap<String, String>();
+                            postData.put("txtUname", inputFullName.getText().toString());
+                            postData.put("txtUpass", inputPassword.getText().toString());
+                            postData.put("txtUemail", inputEmail.getText().toString());
+                            postData.put("txtUmobile", inputMobile.getText().toString());
+                            PostResponseAsyncTask loginTask =
+                                    new PostResponseAsyncTask(RegisterActivity.this, postData, RegisterActivity.this);
+                            loginTask.execute("https://mobile-app-gcp.wl.r.appspot.com/registration.php");
 
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Password Does Not match", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Password Does Not match", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(),"Please check your internet connection and try again !!",Toast.LENGTH_SHORT).show();
                     }
                 }
             }

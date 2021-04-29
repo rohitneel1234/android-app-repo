@@ -10,8 +10,8 @@
     <string name="title_activity_show_video">ShowVideo</string>
     <string name="hello_world">Hello world!</string>
     <string name="empty_message">No data found!</string>
-    <string name="title_activity_media">Upload Media</string>
-    <string name="title_activity_download_media">Download Media</string>
+    <string name="title_activity_media">Photo Editor</string>
+    <string name="title_activity_download_media">Gallery View</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -36,6 +36,10 @@
     <string name="edit"><u>Edit</u></string>
 
     <string name="menu_home">Home</string>
+    <string name="personalData">Personal Data</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="history">History</string>
+    <string name="report">Report</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
@@ -47,5 +51,26 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="photo_result_prefix">MediaStore_</string>
+    <string name="photo_saved_toast_string">Photo Saved!</string>
+    <string name="directory_name">/MediaStore</string>
+    <string name="permissions_message">All permissions are not given!\nApp may not work properly, Do you want to try again?</string>
+    <string name="toast_message">Sorry, Permissions not given!</string>
+    <string name="menu_tutorial_text">Tutorial</string>
+    <string name="slide_1_title">SIDE MENU</string>
+    <string name="slide_1_desc">Manage your account, capture or upload your photos,videos using editor tool, view gallery, settings, about us and much more!</string>
+    <string name="slide_2_title">MANAGE YOUR ACCOUNT</string>
+    <string name="slide_2_desc">Edit your profile details and update, change your password!</string>
+    <string name="slide_3_title">PHOTO EDITOR TOOL</string>
+    <string name="slide_3_desc">Edit or capture your photo for cropping, trimming, stretching, cloning, adding text and filters for images!</string>
+    <string name="slide_4_title">Choose Media and Upload Option</string>
+    <string name="slide_4_desc">Capture photo using Camera option to apply different option of editor tools, Choose images from device gallery to use different option of photo editor, Choose video from social media and upload them on cloud!</string>
+    <string name="slide_5_title">Explore Gallery</string>
+    <string name="slide_5_desc">View images and videos which is captured or used by photo editor tools, click on image to get actual size, click on video icon to play video!</string>
+    <string name="slide_6_title">SETTINGS</string>
+    <string name="slide_6_desc">Customize theme for dark mode, use full screen mode!</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Done</string>
 
 </resources>

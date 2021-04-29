@@ -6,8 +6,10 @@ package com.example.gcpapp.storage;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.OpenableColumns;
 import android.webkit.MimeTypeMap;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,15 +49,54 @@ public class StorageUtils extends AppCompatActivity {
      * the original file
      * @param bucketName
      *            Bucket where file will be uploaded
-     * @param fileUri
+     * @param filePath
      *             Media file from gallary to upload
      * @throws Exception
      */
-    public static void uploadFile(String bucketName, Uri fileUri, Context context)
+    public static void uploadImages(String bucketName, String filePath)
+            throws Exception {
+
+        final File file = new File(filePath);
+
+        StringBuilder sb = new StringBuilder(20);
+
+        for (int i = 0; i < 20; i++) {
+
+            String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    + "0123456789"
+                    + "abcdefghijklmnopqrstuvxyz";
+            int index = (int) (alphaNumericString.length() * Math.random());
+
+            sb.append(alphaNumericString.charAt(index));
+        }
+
+        Storage storage = getStorage();
+        StorageObject object = new StorageObject();
+        object.setBucket(bucketName);
+
+        InputStream stream = new FileInputStream(file);
+        try {
+            String contentType = URLConnection
+                    .guessContentTypeFromStream(stream);
+            InputStreamContent content = new InputStreamContent(contentType,
+                    stream);
+            Storage.Objects.Insert insert = storage.objects().insert(
+                    bucketName, null, content);
+
+            insert.setName("jtgAppMedia/" + sb.toString() + "." + "jpg");
+            insert.execute();
+        } finally {
+            stream.close();
+        }
+    }
+
+    public static void uploadVideos(String bucketName, Uri fileUri, Context context)
             throws Exception {
 
         final File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                 "/jtgMedia/" );
+
+        saveFile(context, fileUri);
 
         createFile(context, fileUri, file);
 
@@ -83,7 +124,8 @@ public class StorageUtils extends AppCompatActivity {
                     stream);
             Storage.Objects.Insert insert = storage.objects().insert(
                     bucketName, null, content);
-            insert.setName("jtgAppMedia/"  +sb.toString() + "."+ getFileExtension(fileUri,context));
+
+            insert.setName("jtgAppMedia/" + sb.toString() + "." + getFileExtension(fileUri,context));
             insert.execute();
         } finally {
             stream.close();
@@ -128,6 +170,32 @@ public class StorageUtils extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Saving file into destination folder
+     * @param context - Application Context
+     * @param sourceUri - Uri used to get video file source path
+     * @throws IOException
+     */
+    private static void saveFile(Context context, Uri sourceUri) throws IOException {
+
+        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + "MediaStore" + File.separator;
+        InputStream in = context.getContentResolver().openInputStream(sourceUri);
+        Cursor cursor = context.getContentResolver().query(sourceUri, null, null, null, null);
+        int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        cursor.moveToFirst();
+        String uriFileName = cursor.getString(nameIndex);
+        OutputStream out = new FileOutputStream(destination + uriFileName);
+        byte[] buffer = new byte[1024];
+        int read = in.read(buffer);
+        while (read != -1) {
+            out.write(buffer, 0, read);
+            read = in.read(buffer);
+        }
+        in.close();
+        out.close();
+    }
+
 
     /**
      * Deletes a file within a bucket
@@ -236,7 +304,7 @@ public class StorageUtils extends AppCompatActivity {
     }
 
     private static File getTempPkc12File() throws IOException {
-        InputStream pkc12Stream = ProjectApplication.getAppContext().getAssets().open("mobile-app-gcp-01b2e41072d8.p12");
+        InputStream pkc12Stream = ProjectApplication.getAppContext().getAssets().open("mobile-app-gcp-311410-8805980685e4.p12");
         File tempPkc12File = File.createTempFile("temp_pkc12_file", "p12");
         OutputStream tempFileStream = new FileOutputStream(tempPkc12File);
 

@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_centerInParent="true"
+        android:background="#0028af"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/slide_1_title"
+            android:layout_marginTop="160dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/slide_title"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="190dp"
+            android:paddingLeft="@dimen/desc_padding"
+            android:paddingRight="@dimen/desc_padding"
+            android:text="@string/slide_1_desc"
+            android:textAlignment="center"
+            android:textColor="#e2e2e2"
+            android:textSize="@dimen/slide_desc" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imgSideBar"
+        android:layout_width="@dimen/img_width_height"
+        android:layout_height="@dimen/img_width_height"
+        android:layout_marginTop="48dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/main_side_bar" />
+
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.gcpapp.activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -14,13 +15,13 @@ import android.view.Menu
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -32,9 +33,11 @@ import com.example.gcpapp.R
 import com.example.gcpapp.download.DownloadMedia
 import com.example.gcpapp.helper.SessionManager
 import com.example.gcpapp.upload.MediaActivity
+import com.example.gcpapp.util.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.kosalgeek.asynctask.AsyncResponse
+import com.kosalgeek.asynctask.BuildConfig
 import com.kosalgeek.asynctask.PostResponseAsyncTask
 import org.json.JSONArray
 import org.json.JSONException
@@ -51,6 +54,7 @@ class MainActivity : AppCompatActivity(), AsyncResponse {
     private var MobileNo: String? = null
     private var Password: String? = null
     private var txtEmail: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -63,19 +67,27 @@ class MainActivity : AppCompatActivity(), AsyncResponse {
         toggle.syncState()
         mSession = SessionManager(applicationContext)
 
-        if (mSession!!.loadState()) {
+        if (Utils.getInstance(applicationContext).isNetworkAvailable) {
+            Toast.makeText(applicationContext,"Network Available",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(applicationContext,"Please check your internet connection and try again !!",Toast.LENGTH_SHORT).show();
+        }
+
+       /* if (mSession!!.loadState()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
         else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+        }*/
 
         if (!mSession!!.isUserLoggedIn) {
             logoutUser()
         }
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
-        headerTextTitle = navigationView.getHeaderView(0).findViewById<View>(R.id.txtHeader) as TextView
+        if(navigationView.getHeaderView(0)!=null) {
+            headerTextTitle = navigationView.getHeaderView(0).findViewById<View>(R.id.txtHeader) as TextView
+        }
         navigationView.menu.findItem(R.id.nav_rate_us).setOnMenuItemClickListener {
             showRateUs(this@MainActivity)
             true
@@ -90,6 +102,10 @@ class MainActivity : AppCompatActivity(), AsyncResponse {
             headerTextTitle!!.text = userNameLetter
         }
         headerTextTitle!!.setOnClickListener {
+            if (Utils.getInstance(applicationContext).isNetworkAvailable) {
+            } else {
+                Toast.makeText(applicationContext, "Please check your internet connection and try again !!", Toast.LENGTH_SHORT).show()
+            }
             val postData = HashMap<String, String?>()
             postData["txtEmail"] = txtEmail
             val emailTask = PostResponseAsyncTask(this@MainActivity, postData, this@MainActivity)
@@ -122,6 +138,18 @@ class MainActivity : AppCompatActivity(), AsyncResponse {
                     i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(i)
                 }
+                R.id.nav_share -> {
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.type = "text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Photo Editor")
+                    var shareMessage = "\nLet me recommend you this application Download it & check it out yourself\n"
+                    shareMessage = """
+                    ${shareMessage}https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}
+                    """.trimIndent()
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+                    startActivity(Intent.createChooser(shareIntent, "choose one"))
+                }
+
             }
             val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
             drawer.closeDrawer(GravityCompat.START)
@@ -182,17 +210,23 @@ class MainActivity : AppCompatActivity(), AsyncResponse {
         return false
     }
 
+
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle(Html.fromHtml("<font color='#ffffff'>GCP Media App</font>"))
-        builder.setMessage(Html.fromHtml("<font color='#ffffff'>Are you sure you want to exit?</font>"))
+        builder.setTitle(Html.fromHtml("<font color='#ffffff'>Confirm</font>"))
+        builder.setMessage(Html.fromHtml("<font color='#ffffff'>Are you sure you want to exit from"+"<br/>"+
+                "Photo Editor?</font>"))
                 .setCancelable(false)
-                .setIcon(R.drawable.exitpopup)
-                .setPositiveButton("Ok") { dialog, which -> super@MainActivity.onBackPressed() }
-                .setNegativeButton("Cancel") { dialog, which -> dialog.cancel() }
+                .setIcon(R.drawable.ic_baseline_exit_to_app_24)
+                .setPositiveButton("Yes") { dialog, which -> super@MainActivity.onBackPressed() }
+                .setNegativeButton("No") { dialog, which -> dialog.cancel() }
         val alertDialog = builder.create()
         alertDialog.show()
-        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(getColor(R.color.btn_login)))
+        val nbutton: Button = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+        nbutton.setTextColor(Color.WHITE)
+        val pbutton: Button = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE)
+        pbutton.setTextColor(Color.WHITE)
+        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(getColor(R.color.dialogBox)))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -209,13 +243,15 @@ class MainActivity : AppCompatActivity(), AsyncResponse {
 
     private fun logoutUser() {
         val builder = AlertDialog.Builder(this)
+        builder.setTitle(Html.fromHtml("<font color='#ffffff'>Confirm</font>"))
         builder.setMessage(Html.fromHtml("<font color='#ffffff'>Are you sure you want to log out?</font>"))
                 .setCancelable(false)
-                .setNegativeButton(Html.fromHtml("<font color='#ffffff'>Logout</font>")) { dialog, which ->
+                .setIcon(R.drawable.ic_baseline_logout_24)
+                .setNegativeButton(Html.fromHtml("<font color='#ffffff'>Cancel</font>")) { dialog,which -> dialog.cancel() }
+                .setPositiveButton(Html.fromHtml("<font color='#ffffff'>Log out</font>")) { dialog, which ->
                     mSession!!.logoutUser()
                     startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                 }
-                .setPositiveButton(Html.fromHtml("<font color='#ffffff'>Cancel</font>")) { dialog, which -> dialog.cancel() }
         val alertDialog = builder.create()
         alertDialog.show()
         alertDialog.window!!.setBackgroundDrawable(ColorDrawable(getColor(R.color.dialogBox)))
@@ -226,7 +262,6 @@ class MainActivity : AppCompatActivity(), AsyncResponse {
         open1.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val popup = layoutInflater.inflate(R.layout.rate_us, null)
         val happy = popup.findViewById<LinearLayout>(R.id.happy)
-        val bad = popup.findViewById<LinearLayout>(R.id.bad)
         open1.setContentView(popup)
         val displaymetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displaymetrics)
@@ -238,16 +273,6 @@ class MainActivity : AppCompatActivity(), AsyncResponse {
         lparam.copyFrom(open1.window!!.attributes)
         open1.window!!.setLayout((displaymetrics.widthPixels - 40), ActionBar.LayoutParams.WRAP_CONTENT)
         open1.show()
-        bad.setOnClickListener { // TODO Auto-generated method stub
-            try {
-                val intent = Intent(Intent.ACTION_SEND)
-                intent.type = "plain/text"
-                intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("rohitneel007@gmail.com"))
-                startActivity(Intent.createChooser(intent, ""))
-            } catch (e: NullPointerException) {
-                Toast.makeText(applicationContext, "No application can perform this operation", Toast.LENGTH_SHORT).show()
-            }
-        }
         happy.setOnClickListener { // TODO Auto-generated method stub
             val browserIntent = Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/details?id=co.rohitneel.gcpmedia"))
             startActivity(browserIntent)

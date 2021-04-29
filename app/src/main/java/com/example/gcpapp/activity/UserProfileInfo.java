@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.gcpapp.R;
 import com.example.gcpapp.api.APIService;
 import com.example.gcpapp.models.Result;
+import com.example.gcpapp.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -61,7 +62,6 @@ public class UserProfileInfo extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String txtName = etUserName.getText().toString().trim();
                 String txtEmail = etEmail.getText().toString().trim();
                 String txtMobile = etMobileNo.getText().toString().trim();
@@ -94,22 +94,26 @@ public class UserProfileInfo extends AppCompatActivity {
                             txtMobile
                     );
 
-                    call.enqueue(new Callback<Result>() {
-                        @Override
-                        public void onResponse(Call<Result> call, Response<Result> response) {
-                            Result result = response.body();
-                            Toast.makeText(getApplicationContext(), result.getMsg(), Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent();
-                            intent.putExtra("name",userName);
-                            setResult(RESULT_OK,intent);
-                            finish();
-                        }
+                    if (Utils.getInstance(getApplicationContext()).isNetworkAvailable()) {
+                        call.enqueue(new Callback<Result>() {
+                            @Override
+                            public void onResponse(Call<Result> call, Response<Result> response) {
+                                Result result = response.body();
+                                Toast.makeText(getApplicationContext(), result.getMsg(), Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent();
+                                intent.putExtra("name", userName);
+                                setResult(RESULT_OK, intent);
+                                finish();
+                            }
 
-                        @Override
-                        public void onFailure(Call<Result> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), "error:" + t.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(Call<Result> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), "error:" + t.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
+                        Toast.makeText(getApplicationContext(),"Please check your internet connection and try again !!",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
